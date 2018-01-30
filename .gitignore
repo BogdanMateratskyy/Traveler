@@ -4,6 +4,20 @@
 # Log file
 *.log
 
+#Eclipse files
+*.project
+*.settings/
+*.classpath
+
+.log
+.springBeans
+bin
+target/
+traveler-model/target/
+traveler-persistence/target/
+traveler-presentation/target/
+traveler-service/target/
+
 # BlueJ files
 *.ctxt
 
