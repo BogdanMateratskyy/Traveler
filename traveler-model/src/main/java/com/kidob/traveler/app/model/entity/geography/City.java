@@ -1,6 +1,7 @@
 package com.kidob.traveler.app.model.entity.geography;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 import com.kidob.traveler.app.infra.util.CommonUtil;
@@ -66,6 +67,12 @@ public class City extends AbstractEntity {
 		this.stations = stations;
 	}
 
+	/**
+	 * Adds specified station to the city station list
+	 * 
+	 * @param transportType
+	 * @return
+	 */
 	public Station addStation(final TransportType transportType) {
 		if (stations == null) {
 			stations = new HashSet<>();
@@ -74,5 +81,18 @@ public class City extends AbstractEntity {
 		stations.add(station);
 
 		return station;
+	}
+
+	/**
+	 * Remove specified station from city station list
+	 * 
+	 * @param station
+	 */
+	public void removeStation(Station station) {
+		Objects.requireNonNull(station, "station parameter is not initialized");
+		if (stations == null) {
+			return;
+		}
+		stations.remove(station);
 	}
 }
