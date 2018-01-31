@@ -63,10 +63,6 @@ public class City extends AbstractEntity {
 		return CommonUtil.getSafeSet(stations);
 	}
 
-	public void setStations(Set<Station> stations) {
-		this.stations = stations;
-	}
-
 	/**
 	 * Adds specified station to the city station list
 	 * 
