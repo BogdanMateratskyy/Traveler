@@ -1,6 +1,5 @@
 package com.kidob.traveler.app.model.search.criteria.range;
 
-import com.kidob.traveler.app.infra.exception.flow.InvalidParameterException;
 import com.kidob.traveler.app.infra.util.Checks;
 
 /**
