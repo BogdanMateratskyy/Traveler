@@ -1,4 +1,4 @@
-package org.kidob.traveler.app.rest.service.config;
+package com.kidob.traveler.app.rest.service.config;
 
 import javax.ws.rs.ApplicationPath;
 
@@ -15,6 +15,6 @@ import org.glassfish.jersey.server.ResourceConfig;
 public class JerseyConfig extends ResourceConfig {
 
 	public JerseyConfig() {
-		packages("com.kidob.travel.app.rest");
+		packages("com.kidob.traveler.app.rest");
 	}
 }

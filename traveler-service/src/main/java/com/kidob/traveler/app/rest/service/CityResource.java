@@ -1,4 +1,4 @@
-package org.kidob.traveler.app.rest.service;
+package com.kidob.traveler.app.rest.service;
 
 import java.util.List;
 
