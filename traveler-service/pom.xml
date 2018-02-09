@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>org.kidob</groupId>
 		<artifactId>traveler</artifactId>
-		<version>0.0.3</version>
+		<version>0.1.1</version>
 	</parent>
 	<artifactId>traveler-service</artifactId>
 	<version>${project.parent.version}</version>
@@ -23,11 +23,12 @@
 		<dependency>
 			<groupId>org.kidob</groupId>
 			<artifactId>traveler-model</artifactId>
-			<version>${project.parent.version}</version>
+			<version>${project.parent.version}</version>			
 		</dependency>
 		<dependency>
 			<groupId>org.glassfish.jersey.containers</groupId>
 			<artifactId>jersey-container-grizzly2-http</artifactId>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.glassfish.jersey.containers</groupId>

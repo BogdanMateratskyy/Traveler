@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>org.kidob</groupId>
 		<artifactId>traveler</artifactId>
-		<version>0.0.3</version>
+		<version>0.1.1</version>
 	</parent>
 	<artifactId>traveler-presentation</artifactId>
 	<version>${project.parent.version}</version>
@@ -14,13 +14,7 @@
 		<dependency>
 			<groupId>org.kidob</groupId>
 			<artifactId>traveler-service</artifactId>
-			<version>${project.parent.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>org.kidob</groupId>
-					<artifactId>traveler-model</artifactId>
-				</exclusion>
-			</exclusions>
+			<version>${project.parent.version}</version>			
 		</dependency>
 	</dependencies>
 
