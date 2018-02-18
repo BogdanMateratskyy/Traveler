@@ -42,7 +42,7 @@ public class ReflectionUtil {
 	 * @return
 	 * @throws ConfigurationException
 	 */
-	public static List<String> findSimilarField(Class<?> clz1, Class<?> clz2) 
+	public static List<String> findSimilarFields(Class<?> clz1, Class<?> clz2) 
 			throws ConfigurationException {
 		try {
 			Field[] fields = clz1.getDeclaredFields();
