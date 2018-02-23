@@ -9,6 +9,8 @@
 *.settings/
 *.classpath
 
+build/
+.gradle
 .log
 .springBeans
 bin

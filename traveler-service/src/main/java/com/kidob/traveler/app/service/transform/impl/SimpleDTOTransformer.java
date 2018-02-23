@@ -1,11 +1,10 @@
 package com.kidob.traveler.app.service.transform.impl;
 
-import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.kidob.traveler.app.infra.util.Checks;
+import com.kidob.traveler.app.infra.util.CommonUtil;
 import com.kidob.traveler.app.infra.util.ReflectionUtil;
 import com.kidob.traveler.app.model.entity.base.AbstractEntity;
 import com.kidob.traveler.app.rest.dto.base.BaseDTO;
@@ -32,7 +31,7 @@ public class SimpleDTOTransformer implements Transformer {
 
 		if (LOGGER.isDebugEnabled()) {
 			LOGGER.debug("SimpleDTOTransformer.transform: {} DTO object",
-					ReflectionToStringBuilder.toString(dto, ToStringStyle.SHORT_PREFIX_STYLE));
+					CommonUtil.toString(dto));
 		}
 
 		return dto;
@@ -54,7 +53,7 @@ public class SimpleDTOTransformer implements Transformer {
 
 		if (LOGGER.isDebugEnabled()) {
 			LOGGER.debug("SimpleDTOTransformer.transform: {} entity",
-					ReflectionToStringBuilder.toString(entity, ToStringStyle.SHORT_PREFIX_STYLE));
+					CommonUtil.toString(entity));
 		}
 
 		return entity;
