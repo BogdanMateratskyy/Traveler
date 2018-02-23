@@ -53,7 +53,7 @@ public class SimpleDTOTransformer implements Transformer {
 
 		if (LOGGER.isDebugEnabled()) {
 			LOGGER.debug("SimpleDTOTransformer.transform: {} entity",
-					CommonUtil.toString(entity));
+					CommonUtil.toString(dto));
 		}
 
 		return entity;

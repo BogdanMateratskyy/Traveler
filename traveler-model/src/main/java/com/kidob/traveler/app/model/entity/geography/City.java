@@ -31,6 +31,9 @@ public class City extends AbstractEntity {
 	 */
 	private Set<Station> stations;
 
+	public City(){		
+	}
+	
 	public City(final String name) {
 		this.setName(name);
 	}
@@ -63,6 +66,10 @@ public class City extends AbstractEntity {
 		return CommonUtil.getSafeSet(stations);
 	}
 
+	public void setStations(Set<Station> stations){
+		this.stations = stations;
+	}
+	
 	/**
 	 * Adds specified station to the city station list
 	 * 
