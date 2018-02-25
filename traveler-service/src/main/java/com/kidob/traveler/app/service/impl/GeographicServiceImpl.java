@@ -30,6 +30,8 @@ public class GeographicServiceImpl implements GeographicService {
 	 * Auto-increment counter for entity id generation
 	 */
 	private int counter = 0;
+	
+	private int stationCounter = 0;
 
 	public GeographicServiceImpl() {
 		cities = new ArrayList<City>();
@@ -46,6 +48,12 @@ public class GeographicServiceImpl implements GeographicService {
 			city.setId(++counter);
 			cities.add(city);
 		}
+		
+		city.getStations().forEach((station) -> {
+			if (station.getId() == 0) {
+				station.setId(++stationCounter);
+			}
+		});
 	}
 
 	@Override
