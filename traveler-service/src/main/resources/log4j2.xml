@@ -9,7 +9,7 @@
 		</Console>
 	</Appenders>
 	<Loggers>
-		<logger name="com.kidob.traveler" level="DEBUG">
+		<logger name="com.kidob.traveler" level="WARN">
 			<AppenderRef ref="fileLog" />
 		</logger>
 		<Root level="ERROR">

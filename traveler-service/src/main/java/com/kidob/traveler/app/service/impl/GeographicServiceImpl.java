@@ -1,10 +1,16 @@
 package com.kidob.traveler.app.service.impl;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
-
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import com.kidob.traveler.app.infra.util.CommonUtil;
 import com.kidob.traveler.app.model.entity.geography.City;
+import com.kidob.traveler.app.model.entity.geography.Station;
+import com.kidob.traveler.app.model.search.criteria.StationCriteria;
+import com.kidob.traveler.app.model.search.criteria.range.RangeCriteria;
 import com.kidob.traveler.app.service.GeographicService;
 
 /**
@@ -20,6 +26,11 @@ public class GeographicServiceImpl implements GeographicService {
 	 */
 	private final List<City> cities;
 
+	/**
+	 * Auto-increment counter for entity id generation
+	 */
+	private int counter = 0;
+
 	public GeographicServiceImpl() {
 		cities = new ArrayList<City>();
 	}
@@ -32,7 +43,25 @@ public class GeographicServiceImpl implements GeographicService {
 	@Override
 	public void saveCity(City city) {
 		if (!cities.contains(city)) {
+			city.setId(++counter);
 			cities.add(city);
 		}
+	}
+
+	@Override
+	public Optional<City> findCityById(final int id) {
+		return cities.stream().filter((city) -> city.getId() == id).findFirst();
+	}
+
+	@Override
+	public List<Station> searchStations(
+			final StationCriteria criteria, final RangeCriteria rangeCriteria) {
+		Set<Station> stations = new HashSet<>();
+		for (City city : cities) {
+			stations.addAll(city.getStations());
+		}
+		return stations.stream()
+				.filter((station) -> station.match(criteria))
+				.collect(Collectors.toList());
 	}
 }

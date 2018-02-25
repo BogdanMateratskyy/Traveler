@@ -31,7 +31,7 @@ public class StationCriteria {
 	 * @param name
 	 * @return
 	 */
-	public static StationCriteria byNme(String name) {
+	public static StationCriteria byName(String name) {
 		return new StationCriteria(name);
 	}
 
