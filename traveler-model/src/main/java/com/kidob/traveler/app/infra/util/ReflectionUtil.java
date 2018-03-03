@@ -1,11 +1,13 @@
 package com.kidob.traveler.app.infra.util;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
 import com.kidob.traveler.app.infra.exception.ConfigurationException;
+import com.kidob.traveler.app.infra.util.annotation.Ignore;
 
 /**
  * Contains reflection-related utility operations
@@ -35,7 +37,7 @@ public class ReflectionUtil {
 	}
 
 	/**
-	 * Returns list of fields with identical names irregardless of their modifiers
+	 * Returns list of fields with identical names regardless of their modifiers
 	 * 
 	 * @param clz1
 	 * @param clz2
@@ -45,21 +47,40 @@ public class ReflectionUtil {
 	public static List<String> findSimilarFields(Class<?> clz1, Class<?> clz2) 
 			throws ConfigurationException {
 		try {
-			Field[] fields = clz1.getDeclaredFields();
-			List<String> targetFields = Stream.of(clz2.getDeclaredFields())
+			List<Field> fields = getFields(clz1);
+
+			List<String> targetFields = getFields(clz2).stream()
+					.filter(field -> !field.isAnnotationPresent(Ignore.class))
 					.map((field) -> field.getName())
 					.collect(Collectors.toList());
-			return Stream.of(fields)
-					.map((field) -> field.getName())
-					.filter((name) -> targetFields.contains(name))
+			return fields.stream().filter(field -> !field.isAnnotationPresent(Ignore.class))
+					.filter(field -> !Modifier.isStatic(field.getModifiers())
+							&& !Modifier.isFinal(field.getModifiers()))
+					.map((field) -> field.getName()).filter((name) -> targetFields.contains(name))
 					.collect(Collectors.toList());
 		} catch (SecurityException e) {
 			throw new ConfigurationException(e);
 		}
 	}
-	
+
 	/**
-	 * Copy specified fields values from source to destination  objects
+	 * Return all declared fields of the specified classes and all superclasses
+	 * 
+	 * @param cls
+	 * @return
+	 */
+	public static <T> List<Field> getFields(Class<?> cls) {
+		List<Field> fields = new ArrayList<Field>();
+		while (cls != null) {
+			fields.addAll(Arrays.asList(cls.getDeclaredFields()));
+			cls = cls.getSuperclass();
+		}
+
+		return fields;
+	}
+
+	/**
+	 * Copy specified fields values from source to destination objects
 	 * 
 	 * @param src
 	 * @param dest
@@ -70,16 +91,16 @@ public class ReflectionUtil {
 			throws ConfigurationException {
 		Checks.checkParameter(src != null, "Source object is not initialized");
 		Checks.checkParameter(dest != null, "Destination object is not initialized");
-		
+
 		try {
 			for (String field : fields) {
-				Field fld = src.getClass().getDeclaredField(field);
-				//Skip unknown fields
+				Field fld = getField(src.getClass(), field);
+				// Skip unknown fields
 				if (fld != null) {
 					fld.setAccessible(true);
 					Object value = fld.get(src);
-					
-					Field fldDest = dest.getClass().getDeclaredField(field);
+
+					Field fldDest = getField(dest.getClass(), field);
 					if (fldDest != null) {
 						fldDest.setAccessible(true);
 						fldDest.set(dest, value);
@@ -87,8 +108,27 @@ public class ReflectionUtil {
 				}
 			}
 		} catch (SecurityException | ReflectiveOperationException 
-				| IllegalArgumentException e){
+				| IllegalArgumentException e) {
 			throw new ConfigurationException(e);
 		}
+	}
+
+	/**
+	 * Returns class field by its name. This method supports base classes as well
+	 * 
+	 * @param clz
+	 * @param name
+	 * @return
+	 */
+	public static <T> Field getField(final Class<?> clz, final String name) {
+		Class<?> current = clz;
+		while (current != null) {
+			try {
+				return current.getDeclaredField(name);
+			} catch (NoSuchFieldException | SecurityException e) {
+				current = current.getSuperclass();
+			}
+		}
+		throw new ConfigurationException("No field " + name + " in the class " + clz);
 	}
 }
