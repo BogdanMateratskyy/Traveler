@@ -1,11 +1,20 @@
 package com.kidob.traveler.app.service.transform.impl;
 
+import static org.mockito.Mockito.*;
 import static org.junit.Assert.*;
 
+import org.powermock.api.mockito.PowerMockito;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
+
+import com.kidob.traveler.app.infra.util.ReflectionUtil;
+
+import java.util.Collections;
 import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 /**
  * Verifies functionality of the {@link SimpleDTOTransformer} unit
@@ -13,6 +22,8 @@ import org.junit.Test;
  * @author Bogdan
  *
  */
+@RunWith(PowerMockRunner.class)
+@PrepareForTest(ReflectionUtil.class)
 public class CachedFieldProviderTest {
 
 	private FieldProvider provider;
@@ -35,6 +46,20 @@ public class CachedFieldProviderTest {
 		List<String> fields = provider.getFieldNames(Source.class, Destination.class);
 		List<String> fields2 = provider.getFieldNames(Source.class, Destination.class);
 
+		assertFalse(fields.isEmpty());
+		assertEquals(fields, fields2);
+	}
+
+	@Test
+	public void testGetFieldNamesAreCached() {
+		List<String> fields = provider.getFieldNames(Source.class, Destination.class);
+		
+		PowerMockito.mockStatic(ReflectionUtil.class);
+		when(ReflectionUtil.findSimilarFields(Source.class, Destination.class))
+		.thenReturn(Collections.emptyList());
+		
+		assertTrue(ReflectionUtil.findSimilarFields(Source.class, Destination.class).isEmpty());
+		List<String> fields2 = provider.getFieldNames(Source.class, Destination.class);
 		assertFalse(fields.isEmpty());
 		assertEquals(fields, fields2);
 	}

@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>org.kidob</groupId>
 		<artifactId>traveler</artifactId>
-		<version>0.1.6</version>
+		<version>0.1.7</version>
 	</parent>
 	<artifactId>traveler-service</artifactId>
 	<version>${project.parent.version}</version>
@@ -52,6 +52,19 @@
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-web</artifactId>
 			<version>${log4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-module-junit4</artifactId>
+			<version>${powermock.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-api-mockito</artifactId>
+			<version>${powermock.version}</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 </project>
