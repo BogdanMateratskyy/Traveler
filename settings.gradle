@@ -1,0 +1,10 @@
+rootProject.name = 'traveler'
+include ':traveler-presentation'
+include ':traveler-model'
+include ':traveler-persistence'
+include ':traveler-service'
+
+project(':traveler-presentation').projectDir = "$rootDir/traveler-presentation" as File
+project(':traveler-model').projectDir = "$rootDir/traveler-model" as File
+project(':traveler-persistence').projectDir = "$rootDir/traveler-persistence" as File
+project(':traveler-service').projectDir = "$rootDir/traveler-service" as File
