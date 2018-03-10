@@ -2,8 +2,8 @@ allprojects  {
   	apply plugin: 'maven'
   	apply plugin: 'eclipse'
 
-  	group = 'org.kidob'
-	version = '0.2.2'
+  	group = 'com.kidob'
+	version = '0.2.3'
 }
 
 subprojects {
