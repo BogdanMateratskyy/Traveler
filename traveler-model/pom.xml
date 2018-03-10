@@ -4,8 +4,17 @@
 	<parent>
 		<groupId>org.kidob</groupId>
 		<artifactId>traveler</artifactId>
-		<version>0.2.0</version>
+		<version>0.2.1</version>
 	</parent>
 	<artifactId>traveler-model</artifactId>
 	<version>${project.parent.version}</version>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+	</dependencies>
+
 </project>

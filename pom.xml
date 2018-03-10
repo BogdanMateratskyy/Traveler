@@ -4,7 +4,7 @@
 
 	<groupId>org.kidob</groupId>
 	<artifactId>traveler</artifactId>
-	<version>0.2.0</version>
+	<version>0.2.1</version>
 	<packaging>pom</packaging>
 	<modules>
 		<module>traveler-presentation</module>
@@ -20,6 +20,7 @@
 		<log4j.version>2.10.0</log4j.version>
 		<powermock.version>1.7.3</powermock.version>
 		<jmockit.version>1.38</jmockit.version>
+		<hibernate.version>5.2.14.Final</hibernate.version>
 	</properties>
 
 	<dependencies>
