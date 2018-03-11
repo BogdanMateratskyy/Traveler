@@ -1,11 +1,14 @@
 package com.kidob.traveler.app.model.entity.geography;
 
+import javax.persistence.Embeddable;
+
 /**
  * Geographical coordinate of an object
  * 
  * @author Bogdan
  *
  */
+@Embeddable
 public class Coordinate {
 
 	private double x;

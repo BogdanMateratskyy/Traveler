@@ -4,6 +4,9 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 import com.kidob.traveler.app.infra.util.CommonUtil;
 import com.kidob.traveler.app.model.entity.base.AbstractEntity;
 import com.kidob.traveler.app.model.entity.transport.TransportType;
@@ -14,6 +17,8 @@ import com.kidob.traveler.app.model.entity.transport.TransportType;
  * @author Bogdan
  *
  */
+@Table(name = "CITY")
+@Entity
 public class City extends AbstractEntity {
 
 	private String name;

@@ -3,7 +3,7 @@ allprojects  {
   	apply plugin: 'eclipse'
 
   	group = 'com.kidob'
-	version = '0.2.3'
+	version = '0.2.5'
 }
 
 subprojects {

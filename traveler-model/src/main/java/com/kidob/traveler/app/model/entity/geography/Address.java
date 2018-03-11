@@ -1,11 +1,14 @@
 package com.kidob.traveler.app.model.entity.geography;
 
+import javax.persistence.Embeddable;
+
 /**
  * Value type that stores address attributes of the specific office of person
  * 
  * @author Bogdan
  *
  */
+@Embeddable
 public class Address {
 
 	private String zipCode;

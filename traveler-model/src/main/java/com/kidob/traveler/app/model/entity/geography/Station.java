@@ -2,6 +2,9 @@ package com.kidob.traveler.app.model.entity.geography;
 
 import java.util.Objects;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 import org.apache.commons.lang3.StringUtils;
 
 import com.kidob.traveler.app.model.entity.base.AbstractEntity;
@@ -15,6 +18,8 @@ import com.kidob.traveler.app.model.search.criteria.StationCriteria;
  * @author Bogdan
  *
  */
+@Table(name = "STATION")
+@Entity
 public class Station extends AbstractEntity {
 
 	private City city;

@@ -1,5 +1,8 @@
 package com.kidob.traveler.app.model.entity.person;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 import com.kidob.traveler.app.model.entity.base.AbstractEntity;
 
 /**
@@ -8,6 +11,8 @@ import com.kidob.traveler.app.model.entity.base.AbstractEntity;
  * @author Bogdan
  *
  */
+@Table(name = "ACCOUNT")
+@Entity
 public class Account extends AbstractEntity {
 
 }

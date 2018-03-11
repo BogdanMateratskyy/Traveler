@@ -2,6 +2,8 @@ package com.kidob.traveler.app.model.entity.base;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.MappedSuperclass;
+
 import com.kidob.traveler.app.model.entity.person.Account;
 
 /**
@@ -10,6 +12,7 @@ import com.kidob.traveler.app.model.entity.person.Account;
  * @author Bogdan
  *
  */
+@MappedSuperclass
 public abstract class AbstractEntity {
 
 	/**

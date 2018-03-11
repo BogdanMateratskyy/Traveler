@@ -4,7 +4,7 @@
 
 	<groupId>com.kidob</groupId>
 	<artifactId>traveler</artifactId>
-	<version>0.2.4</version>
+	<version>0.2.5</version>
 	<packaging>pom</packaging>
 	<modules>
 		<module>traveler-presentation</module>
