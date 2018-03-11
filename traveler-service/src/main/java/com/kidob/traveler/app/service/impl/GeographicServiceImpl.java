@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
+
+import javax.inject.Inject;
+
 import com.kidob.traveler.app.model.entity.geography.City;
 import com.kidob.traveler.app.model.entity.geography.Station;
 import com.kidob.traveler.app.model.search.criteria.StationCriteria;
@@ -22,8 +25,9 @@ import com.kidob.traveler.app.persistence.repository.inmemory.InMemoryCityReposi
 public class GeographicServiceImpl implements GeographicService {
 	private final CityRepository cityRepository;
 
-	public GeographicServiceImpl() {
-		cityRepository = new InMemoryCityRepository();
+	@Inject
+	public GeographicServiceImpl(CityRepository cityRepository) {
+		this.cityRepository = cityRepository;
 	}
 
 	@Override

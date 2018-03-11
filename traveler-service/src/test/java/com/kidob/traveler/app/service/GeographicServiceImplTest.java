@@ -13,6 +13,7 @@ import com.kidob.traveler.app.model.entity.geography.Station;
 import com.kidob.traveler.app.model.entity.transport.TransportType;
 import com.kidob.traveler.app.model.search.criteria.StationCriteria;
 import com.kidob.traveler.app.model.search.criteria.range.RangeCriteria;
+import com.kidob.traveler.app.persistence.repository.inmemory.InMemoryCityRepository;
 import com.kidob.traveler.app.service.impl.GeographicServiceImpl;
 
 /**
@@ -29,7 +30,7 @@ public class GeographicServiceImplTest {
 
 	@Before
 	public void setup() {
-		service = new GeographicServiceImpl();
+		service = new GeographicServiceImpl(new InMemoryCityRepository());
 	}
 
 	@Test

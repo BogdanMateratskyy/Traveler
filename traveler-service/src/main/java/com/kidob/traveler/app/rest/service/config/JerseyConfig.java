@@ -4,6 +4,8 @@ import javax.ws.rs.ApplicationPath;
 
 import org.glassfish.jersey.server.ResourceConfig;
 
+import com.kidob.traveler.app.config.ComponentFeature;
+
 @ApplicationPath("api")
 
 /**
@@ -15,6 +17,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 public class JerseyConfig extends ResourceConfig {
 
 	public JerseyConfig() {
+		super(ComponentFeature.class);
 		packages("com.kidob.traveler.app.rest");
 	}
 }
