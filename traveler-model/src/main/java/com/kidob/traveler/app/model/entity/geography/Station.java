@@ -2,7 +2,11 @@ package com.kidob.traveler.app.model.entity.geography;
 
 import java.util.Objects;
 
+import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Table;
 
 import org.apache.commons.lang3.StringUtils;
@@ -50,6 +54,7 @@ public class Station extends AbstractEntity {
 		return city;
 	}
 
+	@Embedded
 	public Address getAddress() {
 		return address;
 	}
@@ -66,6 +71,7 @@ public class Station extends AbstractEntity {
 		this.phone = phone;
 	}
 
+	@Embedded
 	public Coordinate getCoordinate() {
 		return coordinate;
 	}
@@ -74,6 +80,8 @@ public class Station extends AbstractEntity {
 		this.coordinate = coordinate;
 	}
 
+	@Enumerated(EnumType.STRING)
+	@Column(nullable = false, name = "TRANSPORT_TYPE")
 	public TransportType getTransportType() {
 		return transportType;
 	}

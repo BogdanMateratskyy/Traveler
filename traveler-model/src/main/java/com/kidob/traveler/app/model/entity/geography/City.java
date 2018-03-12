@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -27,8 +28,8 @@ public class City extends AbstractEntity {
 	 */
 	private String district;
 	/**
-	 * Name of the region where district is located. Region is top-level area in
-	 * the country
+	 * Name of the region where district is located. Region is top-level area in the
+	 * country
 	 */
 	private String region;
 	/**
@@ -36,13 +37,14 @@ public class City extends AbstractEntity {
 	 */
 	private Set<Station> stations;
 
-	public City(){		
+	public City() {
 	}
-	
+
 	public City(final String name) {
 		this.setName(name);
 	}
 
+	@Column(name = "NAME", nullable = false, length = 32)
 	public String getName() {
 		return name;
 	}
@@ -59,6 +61,7 @@ public class City extends AbstractEntity {
 		this.district = district;
 	}
 
+	@Column(name = "REGION", nullable = false, length = 32)
 	public String getRegion() {
 		return region;
 	}
@@ -71,10 +74,10 @@ public class City extends AbstractEntity {
 		return CommonUtil.getSafeSet(stations);
 	}
 
-	public void setStations(Set<Station> stations){
+	public void setStations(Set<Station> stations) {
 		this.stations = stations;
 	}
-	
+
 	/**
 	 * Adds specified station to the city station list
 	 * 
