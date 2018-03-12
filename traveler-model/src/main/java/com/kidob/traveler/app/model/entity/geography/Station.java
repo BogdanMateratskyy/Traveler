@@ -63,6 +63,7 @@ public class Station extends AbstractEntity {
 		this.address = address;
 	}
 
+	@Column(name = "PHONE", length = 16)
 	public String getPhone() {
 		return phone;
 	}
