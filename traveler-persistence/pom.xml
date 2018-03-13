@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>com.kidob</groupId>
 		<artifactId>traveler</artifactId>
-		<version>0.2.7</version>
+		<version>0.2.8</version>
 	</parent>
 	<artifactId>traveler-persistence</artifactId>
 
@@ -14,5 +14,18 @@
 			<artifactId>traveler-model</artifactId>
 			<version>${project.parent.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-tools</artifactId>
+			<version>5.2.9.Final</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-java8</artifactId>
+			<version>${hibernate.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+
 	</dependencies>
 </project>
