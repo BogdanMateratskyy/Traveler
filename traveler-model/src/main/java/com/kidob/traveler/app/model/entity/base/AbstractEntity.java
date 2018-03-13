@@ -3,10 +3,13 @@ package com.kidob.traveler.app.model.entity.base;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToOne;
 
 import com.kidob.traveler.app.model.entity.person.Account;
 
@@ -69,6 +72,8 @@ public abstract class AbstractEntity {
 		this.modifiedAt = modifiedAt;
 	}
 
+	@OneToOne(fetch = FetchType.LAZY, cascade = {})
+	@JoinColumn(name = "CREATED_BY", updatable = false)
 	public Account getCreatedBy() {
 		return createdBy;
 	}
@@ -77,6 +82,8 @@ public abstract class AbstractEntity {
 		this.createdBy = createdBy;
 	}
 
+	@OneToOne(fetch = FetchType.LAZY, cascade = {})
+	@JoinColumn(name = "MODIFIED_BY", insertable = false)
 	public Account getModifiedBy() {
 		return modifiedBy;
 	}
