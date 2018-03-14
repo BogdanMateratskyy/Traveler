@@ -21,9 +21,7 @@ import com.kidob.traveler.app.model.entity.transport.TransportType;
 import com.kidob.traveler.app.rest.dto.CityDTO;
 import com.kidob.traveler.app.rest.service.base.BaseResource;
 import com.kidob.traveler.app.service.GeographicService;
-import com.kidob.traveler.app.service.impl.GeographicServiceImpl;
 import com.kidob.traveler.app.service.transform.Transformer;
-import com.kidob.traveler.app.service.transform.impl.SimpleDTOTransformer;
 
 @Path("cities")
 /**
