@@ -120,7 +120,7 @@ public class ReflectionUtil {
 	 * @param name
 	 * @return
 	 */
-	public static <T> Field getField(final Class<?> clz, final String name) {
+	public static <T> Field getField(final Class<T> clz, final String name) {
 		Class<?> current = clz;
 		while (current != null) {
 			try {

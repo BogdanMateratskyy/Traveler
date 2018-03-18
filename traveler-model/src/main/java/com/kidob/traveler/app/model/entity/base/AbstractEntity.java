@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
 
 import com.kidob.traveler.app.model.entity.person.Account;
 
@@ -91,6 +92,13 @@ public abstract class AbstractEntity {
 	public void setModifiedBy(Account modifiedBy) {
 		this.modifiedBy = modifiedBy;
 	}
+	
+	@PrePersist
+	public void prePersist() {
+		if (getId() == 0) {
+			setCreatedAt(LocalDateTime.now());
+		}
+	} 
 
 	@Override
 	public int hashCode() {

@@ -5,7 +5,6 @@ import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -59,6 +58,14 @@ public class Station extends AbstractEntity {
 		return city;
 	}
 
+	public void setCity(City city) {
+		this.city = city;
+	}
+	
+	public void setTransportType(TransportType transportType) {
+		this.transportType = transportType;
+	}
+	
 	@Embedded
 	public Address getAddress() {
 		return address;
@@ -86,7 +93,7 @@ public class Station extends AbstractEntity {
 		this.coordinate = coordinate;
 	}
 
-	@Enumerated(EnumType.STRING)
+	@Enumerated
 	@Column(nullable = false, name = "TRANSPORT_TYPE")
 	public TransportType getTransportType() {
 		return transportType;

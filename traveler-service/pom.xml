@@ -24,7 +24,7 @@
 			<groupId>com.kidob</groupId>
 			<artifactId>traveler-model</artifactId>
 			<version>${project.parent.version}</version>
-		</dependency>		
+		</dependency>
 		<dependency>
 			<groupId>com.kidob</groupId>
 			<artifactId>traveler-persistence</artifactId>
@@ -75,6 +75,12 @@
 			<groupId>org.jmockit</groupId>
 			<artifactId>jmockit</artifactId>
 			<version>${jmockit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>1.4.196</version>
 			<scope>test</scope>
 		</dependency>
 

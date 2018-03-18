@@ -44,7 +44,7 @@ public class City extends AbstractEntity {
 	}
 
 	public City(final String name) {
-		this.setName(name);
+		this.name = name;
 	}
 
 	@Column(name = "NAME", nullable = false, length = 32)
@@ -65,7 +65,7 @@ public class City extends AbstractEntity {
 		this.district = district;
 	}
 
-	@Column(name = "REGION", nullable = false, length = 32, unique = true)
+	@Column(name = "REGION", nullable = false, length = 32)
 	public String getRegion() {
 		return region;
 	}
@@ -101,7 +101,7 @@ public class City extends AbstractEntity {
 	}
 
 	/**
-	 * Remove specified station from city station list
+	 * Removes specified station from city station list
 	 * 
 	 * @param station
 	 */

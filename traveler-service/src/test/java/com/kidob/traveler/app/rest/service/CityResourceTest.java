@@ -13,9 +13,8 @@ import javax.ws.rs.core.Response;
 import org.glassfish.jersey.test.JerseyTest;
 import org.junit.Test;
 
-import com.kidob.traveler.app.model.entity.geography.City;
 import com.kidob.traveler.app.rest.dto.CityDTO;
-import com.kidob.traveler.app.rest.service.CityResource;
+//import com.kidob.traveler.app.rest.service.CityResource;
 import com.kidob.traveler.app.rest.service.config.JerseyConfig;
 
 /**
@@ -68,6 +67,8 @@ public class CityResourceTest extends JerseyTest {
 	public void testSaveCitySuccess() {
 		CityDTO city = new CityDTO();
 		city.setName("Kyiv");
+		city.setDistrict("Odessa");
+		city.setRegion("Odessa");
 
 		Response response = target("cities").request().post(Entity.entity(city, MediaType.APPLICATION_JSON));
 		assertEquals(response.getStatus(), Response.Status.NO_CONTENT.getStatusCode());
