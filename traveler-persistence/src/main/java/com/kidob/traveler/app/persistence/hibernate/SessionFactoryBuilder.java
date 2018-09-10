@@ -17,6 +17,7 @@ import com.kidob.traveler.app.model.entity.geography.City;
 import com.kidob.traveler.app.model.entity.geography.Coordinate;
 import com.kidob.traveler.app.model.entity.geography.Station;
 import com.kidob.traveler.app.model.entity.person.Account;
+import com.kidob.traveler.app.persistence.hibernate.interceptor.TimestampInterceptor;
 
 /**
  * Component that is responsible for managing Hibernate session factory
@@ -38,19 +39,21 @@ public class SessionFactoryBuilder {
 		sources.addAnnotatedClass(Address.class);
 		sources.addAnnotatedClass(Account.class);
 
-		sessionFactory = sources.buildMetadata().buildSessionFactory();
+		org.hibernate.boot.SessionFactoryBuilder builder = sources.getMetadataBuilder().build()
+				.getSessionFactoryBuilder().applyInterceptor(new TimestampInterceptor());
+		
+		sessionFactory = builder.build();
 	}
 
 	private Properties loadProperties() {
 		try {
-			InputStream in = SessionFactoryBuilder.class.getClassLoader()
-					.getResourceAsStream("application.properties");
+			InputStream in = SessionFactoryBuilder.class.getClassLoader().getResourceAsStream("application.properties");
 			Properties properties = new Properties();
 			properties.load(in);
-			
+
 			return properties;
 		} catch (IOException e) {
-			throw new PersistenceException(e); 
+			throw new PersistenceException(e);
 		}
 	}
 
