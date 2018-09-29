@@ -6,7 +6,7 @@ import java.util.Set;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.dialect.Dialect;
-import org.hibernate.dialect.MySQL55Dialect;
+import org.hibernate.dialect.MySQL5Dialect;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
 import org.hibernate.tool.schema.TargetType;
 
@@ -49,6 +49,6 @@ public class Export {
 	}
 	
 	public static void main(String[] args) {
-		exportDatabase("", MySQL55Dialect.class);
+		exportDatabase("", MySQL5Dialect.class);
 	}
 }

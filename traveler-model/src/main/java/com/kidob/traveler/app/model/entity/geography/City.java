@@ -25,6 +25,8 @@ import com.kidob.traveler.app.model.entity.transport.TransportType;
 @Entity
 public class City extends AbstractEntity {
 
+	public static final String FIELD_NAME = "name";
+	
 	private String name;
 	/**
 	 * Name of the district where city is placed
